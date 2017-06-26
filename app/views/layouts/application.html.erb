@@ -7,8 +7,21 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
+<header>
+  <% if logged_in? %>
+    <%= current_user.username %>
+    <%= button_to "Log Out", session_url, method: :delete %>
+  <% else %>
+    <%= link_to "Create User", new_user_url %>
+    <%= link_to "Log In", new_session_url %>
+  <% end %>
+</header>
   <body>
+    <% if flash[:errors] %>
+      <% flash[:errors].each do |error| %>
+        <%= error %>
+      <% end %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
