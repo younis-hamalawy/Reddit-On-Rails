@@ -18,5 +18,12 @@ class Sub < ApplicationRecord
   primary_key: :id,
   foreign_key: :user_id
 
-  has_many :posts
+  has_many :cross_posts,
+    class_name: "PostSub",
+    primary_key: :id,
+    foreign_key: :post_id
+
+  has_many :posts,
+    through: :cross_posts,
+    source: :posts
 end

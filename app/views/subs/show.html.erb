@@ -1,2 +1,15 @@
-<h1>Subs#show</h1>
-<p>Find me in app/views/subs/show.html.erb</p>
+<h1><%= @sub.title %></h1>
+<p><%= @sub.description %></p>
+<%= button_to "Remove Sub", sub_url(@sub), method: :delete %>
+
+<br>
+
+<h4>Moderator: <%= @sub.moderator.username %></h4>
+
+<h3>Posts!</h3>
+
+<ul>
+  <% @sub.posts.each do |post| %>
+    <li><%= link_to "#{post.title}", post_url(post) %></li>
+  <% end %>
+</ul>

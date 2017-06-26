@@ -24,4 +24,11 @@
     <% end %>
     <%= yield %>
   </body>
+
+  <footer>
+    <%= link_to "Sub List", subs_url %>
+    <%# if logged_in? %>
+      <%#= link_to "#{current_user.username}'s subs",  %>
+    <%# end %>
+  </footer>
 </html>
